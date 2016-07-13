@@ -11,7 +11,9 @@ Features:
   * Minibatch Gradient Descent
   * Newton's Method
 * **Regression:**
-  * Linear Regression 
+  * Linear Regression
+    * Descent Method
+    * Normal Equations Method
 * **Classification:**
   * Logistic Regression
 
