@@ -5,8 +5,13 @@ Requirements:
 * `numpy`: for handling matrices/vectors
 
 Features:
-* **Supervised Learning:**
+* **Descent Methods:**
+  * Batch Gradient Descent
+  * Stochastic Gradient Descent
+  * Minibatch Gradient Descent
+  * Newton's Method
+* **Regression:**
+  * Linear Regression 
+* **Classification:**
+  * Logistic Regression
 
-* **Unsupervised Learning:**
-
-* **Reinforcement Learning:**
