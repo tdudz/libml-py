@@ -9,7 +9,7 @@ parameters for each training example.
 
 import numpy as np
 
-def stochastic_gradient_descent(X, y, gradient, learning_rate=0.01, iterations=10000, normalize=False):
+def stochastic_gradient_descent(X, y, gradient, learning_rate=0.01, iterations=1000):
 	"""
 	Performs stochastic gradient descent for a set number of iterations.
 
@@ -19,31 +19,16 @@ def stochastic_gradient_descent(X, y, gradient, learning_rate=0.01, iterations=1
 		gradient (func): Function used to compute the gradient, a function of (X, y, weights)
 		learning rate (float): Step size used during each iteration
 		iterations (int): Number of iterations to perform
-		normalize (bool): Boolean whether or not to normalize input vector
 
 	Returns:
 		np.ndarray: A np array of weights with shape [n_features, 1]
 	"""
-	if normalize:
-		X = normalize(X)
-	theta = np.zeros(np.shape(X)[1])
+	theta = np.zeros((len(X[0]),1))
 	for _ in xrange(iterations):
 		locs = list(range(len(y)))
 		np.random.shuffle(locs)
 		for loc in locs:
-			theta = np.subtract(theta, learning_rate * gradient(X[loc], y[loc], weights))
+			rand_x = np.asarray([X[loc]])
+			rand_y = np.asarray([y[loc]])
+			theta = np.subtract(theta, learning_rate * gradient(rand_x, rand_y, theta))
 	return theta
-
-def normalize(X):
-	"""
-	Normalizes the input vector.
-
-	Args:
-		X (np.ndarray): Vector of training data with shape [n_samples, n_features]
-
-	Returns:
-		np.ndarray: A normalized version of the input vector.
-	"""
-	mu = np.mean(X, axis=0)
-	sigma = np.std(X, axis=0)
-	return (X-mu)/sigma

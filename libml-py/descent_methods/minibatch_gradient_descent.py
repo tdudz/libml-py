@@ -1,5 +1,5 @@
 """
-Mini-Batch Gradient Descent
+Minibatch Gradient Descent
 ---------------------------
 
 Computes the gradient of the cost function with respect to the 
@@ -8,8 +8,7 @@ parameters for a set of n training examples.
 
 import numpy as np
 
-def minibatch_gradient_descent(X, y, gradient, batch_size, learning_rate=0.01, 
-                               iterations=10000, normalize=False)
+def minibatch_gradient_descent(X, y, gradient, batch_size, learning_rate=0.01, iterations=1000):
     """
     Performs minibatch gradient descent for a set number of iterations.
 
@@ -20,30 +19,13 @@ def minibatch_gradient_descent(X, y, gradient, batch_size, learning_rate=0.01,
         batch_size (int): Size of the individual minibatch
         learning rate (float): Step size used during each iteration
         iterations (int): Number of iterations to perform
-        normalize (bool): Boolean whether or not to normalize input vector
 
     Returns:
         np.ndarray: A np array of weights with shape [n_features, 1]
     """
-    if normalize:
-        X = normalize(X)
-    theta = np.zeros(np.shape(X)[1])
+    theta = np.zeros((len(X[0]),1))
     for _ in xrange(iterations):
         shuffled = map(np.random.permutation, X)
-        for i in xrange(,len(y),batch_size):
-            theta = np.subtract(theta, learning_rate * gradient(X[i:i+batch_size], y[i:i+batch_size], weights))
+        for i in xrange(0,len(y),batch_size):
+            theta = np.subtract(theta, learning_rate * gradient(X[i:i+batch_size], y[i:i+batch_size], theta))
     return theta
-
-def normalize(X):
-    """
-    Normalizes the input vector.
-
-    Args:
-        X (np.ndarray): Vector of training data with shape [n_samples, n_features]
-
-    Returns:
-        np.ndarray: A normalized version of the input vector.
-    """
-    mu = np.mean(X, axis=0)
-    sigma = np.std(X, axis=0)
-    return (X-mu)/sigma
