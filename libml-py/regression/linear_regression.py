@@ -2,8 +2,7 @@
 Linear Regression
 -----------------
 
-Performs linear regression, including regularization.
-Includes closed form and descent method solving.
+Performs linear regression, includes descent and closed form methods.
 
 """
 
