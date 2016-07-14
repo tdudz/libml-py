@@ -5,7 +5,7 @@ Requirements:
 * `numpy`: for handling matrices/vectors
 
 Features:
-* **Descent Methods:**
+* **Optimization Methods:**
   * Gradient Descent
     * Batch
     * Minibatch
@@ -13,10 +13,10 @@ Features:
   * Newton's Method
 * **Regression:**
   * Linear Regression
-    * Descent Method
+    * Optimization Method
     * Normal Equations Method
 * **Classification:**
   * Logistic Regression
-    * Descent Method
+    * Optimization Method
     * Normal Equations Method
 
