@@ -6,9 +6,10 @@ Requirements:
 
 Features:
 * **Descent Methods:**
-  * Batch Gradient Descent
-  * Stochastic Gradient Descent
-  * Minibatch Gradient Descent
+  * Gradient Descent
+    * Batch
+    * Minibatch
+    * Stochastic
   * Newton's Method
 * **Regression:**
   * Linear Regression
@@ -16,4 +17,6 @@ Features:
     * Normal Equations Method
 * **Classification:**
   * Logistic Regression
+    * Descent Method
+    * Normal Equations Method
 
