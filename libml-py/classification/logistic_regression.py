@@ -47,7 +47,7 @@ class LogisticRegression:
         gradient = 1./m * X.T.dot(np.subtract(y, self.sigmoid(X.dot(theta))))
         return gradient
 
-    def fit(self, X, y, normalize_data=False):
+    def fit(self, X, y, normalize_data=False, descent=True):
         """
         Fits the model based on the training data.
 
@@ -55,13 +55,17 @@ class LogisticRegression:
             X (np.ndarray): training data with shape [n_samples, n_features]
             y (np.ndarray): target values with shape [n_samples, 1]
             normalize_data (bool): whether or not to normalize input data
+            descent(bool): whether to solve using a descent or normal equations method
         """
         if normalize_data:
             mu = np.mean(X, axis=0)
             sigma = np.std(X, axis=0)
             X = (X-mu)/sigma
         X = np.insert(X, 0, 1, axis=1)
-        self.theta = batch_gradient_descent(X, y, self.gradient)
+        if descent:
+            self.theta = batch_gradient_descent(X, y, self.gradient)
+        else:
+            self.theta = np.dot(np.linalg.pinv(X.T.dot(X)), X.T.dot(y))
         self.fitted = True
 
     def predict(self, X):
