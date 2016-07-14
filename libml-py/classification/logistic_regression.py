@@ -44,7 +44,7 @@ class LogisticRegression:
             np.ndarray: the gradient of the cost function
         """
         m = len(y)
-        gradient = X.T.dot(np.subtract(y, self.sigmoid(X.dot(theta))))
+        gradient = 1./m * X.T.dot(np.subtract(y, self.sigmoid(X.dot(theta))))
         return gradient
 
     def fit(self, X, y, normalize_data=False):
