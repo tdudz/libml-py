@@ -14,7 +14,7 @@ class LinearRegression:
 	def __init__(self):
 		"""
 		Attributes:
-			fitted (bool): Whether or not the model has been fit
+			fitted (bool): whether or not the model has been fit
 			theta (np.ndarray): vector of weights with size [n_features, 1]
 		"""
 		self.fitted = False
@@ -27,12 +27,12 @@ class LinearRegression:
 		grad(J(Theta)) = 1/m * (y - X*theta) * X
 
 		Args:
-			X (np.ndarray): Training data with shape [n_samples, n_features]
-			y (np.ndarray): Target values with shape [n_samples, 1]
-			theta (np.ndarray): An array of weights with shape [n_features, 1]
+			X (np.ndarray): training data with shape [n_samples, n_features]
+			y (np.ndarray): target values with shape [n_samples, 1]
+			theta (np.ndarray): an array of weights with shape [n_features, 1]
 
 		Returns:
-		 	np.ndarray: The gradient of the MSE cost function
+		 	np.ndarray: the gradient of the MSE cost function
 		"""
 		m = len(y)
 		gradient = 1./m * X.T.dot(np.subtract(X.dot(theta), y))
@@ -43,10 +43,10 @@ class LinearRegression:
 		Fits the model based on the training data.
 
 		Args:
-			X (np.ndarray): Training data with shape [n_samples, n_features]
-			y (np.ndarray): Target values with shape [n_samples, 1]
-			normalize_data (bool): Whether or not to normalize input data
-			descent(bool): Whether to solve using a descent or normal equations method
+			X (np.ndarray): training data with shape [n_samples, n_features]
+			y (np.ndarray): target values with shape [n_samples, 1]
+			normalize_data (bool): whether or not to normalize input data
+			descent(bool): whether to solve using a descent or normal equations method
 		"""
 		if normalize_data:
 			mu = np.mean(X, axis=0)
@@ -64,13 +64,13 @@ class LinearRegression:
 		Predicts an output for a given input vector based on the fitted model.
 
 		Args:
-			X (np.ndarray): Input data with shape [n_samples, n_features]
+			X (np.ndarray): input data with shape [n_samples, n_features]
 		
 		Returns:
-			np.ndarray: Predicted output with shape [n_samples, 1]
+			np.ndarray: predicted output with shape [n_samples, 1]
 
 		Raise:
-			ValueError: If model is not fit.
+			ValueError: if model is not fit.
 		"""
 		if not self.fit:
 			raise ValueError('Model must be fit before predicting.')
