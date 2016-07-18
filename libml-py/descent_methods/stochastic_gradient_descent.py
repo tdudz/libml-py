@@ -17,13 +17,15 @@ def stochastic_gradient_descent(X, y, gradient, learning_rate=0.01, iterations=1
 		X (np.ndarray): training data with shape [n_samples, n_features]
 		y (np.ndarray): target values with shape [n_samples, 1]
 		gradient (func): function used to compute the gradient, a function of (X, y, weights)
+		theta (np.ndarray): np array of weights/parameters to update
 		learning rate (float): step size used during each iteration
 		iterations (int): number of iterations to perform
 
 	Returns:
 		np.ndarray: a np array of weights with shape [n_features, 1]
 	"""
-	theta = np.zeros((len(X[0]),1))
+	if theta is None:
+		theta = np.zeros((len(X[0]),1))
 	for _ in xrange(iterations):
 		locs = list(range(len(y)))
 		np.random.shuffle(locs)
