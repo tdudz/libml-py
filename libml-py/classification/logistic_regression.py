@@ -9,6 +9,7 @@ Includes L1/L2 regularization.
 """
 
 import numpy as np
+from utils import normalize
 from batch_gradient_descent import batch_gradient_descent
 
 class LogisticRegression(object):
@@ -60,9 +61,7 @@ class LogisticRegression(object):
             descent(bool): whether to solve using a descent or normal equations method
         """
         if normalize_data:
-            mu = np.mean(X, axis=0)
-            sigma = np.std(X, axis=0)
-            X = (X-mu)/sigma
+            X = normalize(X)
         X = np.insert(X, 0, 1, axis=1)
         if descent:
             self.theta = batch_gradient_descent(X, y, self.gradient)
