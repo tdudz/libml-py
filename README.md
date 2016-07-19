@@ -15,8 +15,11 @@ Features:
   * Linear Regression
     * Optimization Method
     * Normal Equations Method
+    * Regularization (L1/L2)
 * **Classification:**
   * Logistic Regression
     * Optimization Method
     * Normal Equations Method
-
+    * Regularization (L1/L2)
+  * _k_-Nearest Neighbors
+    * L1, L2, L∞ norms

@@ -2,14 +2,15 @@
 Linear Regression
 -----------------
 
-Performs linear regression, includes descent and closed form methods.
+Performs linear regression using descent and closed forms methods.
+Includes L1/L2 regularization.
 
 """
 
 import numpy as np
 from batch_gradient_descent import batch_gradient_descent
 
-class LinearRegression:
+class LinearRegression(object):
 	"""Class for performing linear regression."""
 	def __init__(self):
 		"""

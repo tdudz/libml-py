@@ -1,20 +1,22 @@
 """
 Logistic Regression
------------------
+-------------------
 
-Performs logistic regression, including regularization.
+Performs logistic regression using descent and closed forms methods.
+Includes L1/L2 regularization.
+
 
 """
 
 import numpy as np
 from batch_gradient_descent import batch_gradient_descent
 
-class LogisticRegression:
+class LogisticRegression(object):
 
     def __init__(self):
         """
         Attributes:
-            fitted (bool): whcdether or not the model has been fit
+            fitted (bool): whether or not the model has been fit
             theta (np.ndarray): vector of weights with size [n_features, 1]
         """
         self.fitted = False
