@@ -8,6 +8,7 @@ Includes L1/L2 regularization.
 """
 
 import numpy as np
+from utils import normalize
 from batch_gradient_descent import batch_gradient_descent
 
 class LinearRegression(object):
@@ -39,7 +40,7 @@ class LinearRegression(object):
 		gradient = 1./m * X.T.dot(np.subtract(X.dot(theta), y))
 		return gradient
 
-	def fit(self, X, y, normalize_data=False, descent=True):
+	def fit(self, X, y, normalize_data=False, descent=True, regularization=None):
 		"""
 		Fits the model based on the training data.
 
@@ -47,12 +48,11 @@ class LinearRegression(object):
 			X (np.ndarray): training data with shape [n_samples, n_features]
 			y (np.ndarray): target values with shape [n_samples, 1]
 			normalize_data (bool): whether or not to normalize input data
-			descent(bool): whether to solve using a descent or normal equations method
+			descent (bool): whether to solve using a descent or normal equations method
+			regularization (str): type of regularization to use (L1/L2)
 		"""
 		if normalize_data:
-			mu = np.mean(X, axis=0)
-			sigma = np.std(X, axis=0)
-			X = (X-mu)/sigma
+			X = normalize(X)
 		X = np.insert(X, 0, 1, axis=1)
 		if descent:
 			self.theta = batch_gradient_descent(X, y, self.gradient)
@@ -76,5 +76,4 @@ class LinearRegression(object):
 		if not self.fit:
 			raise ValueError('Model must be fit before predicting.')
 		X = np.insert(X, 0, 1, axis=1)
-		prediction = X.dot(self.theta)
-		return prediction
+		return X.dot(self.theta)
